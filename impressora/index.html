@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini Impressora Térmica — Imprima do Celular em Segundos</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #fff; color: #1a1a1a; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: white;
+      padding: 60px 20px 80px;
+      text-align: center;
+    }
+    .hero .badge {
+      display: inline-block;
+      background: #e94560;
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: #f5c518; }
+    .hero p.sub {
+      font-size: clamp(16px, 2vw, 20px);
+      opacity: 0.85;
+      max-width: 560px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #e94560;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 18px 48px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(233,69,96,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(233,69,96,0.6); }
+    .hero .social-proof {
+      margin-top: 24px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* PRODUCT IMAGE PLACEHOLDER */
+    .product-img {
+      background: #f9f9f9;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .product-img .img-box {
+      width: 260px;
+      height: 260px;
+      background: #eee;
+      border-radius: 20px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 80px;
+    }
+    .product-img p {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* BENEFITS */
+    .benefits {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .benefits h2 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+      font-weight: 800;
+    }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+    .benefit-card {
+      background: #f9f9f9;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .benefit-card .icon { font-size: 40px; margin-bottom: 12px; }
+    .benefit-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .benefit-card p { font-size: 14px; color: #555; line-height: 1.5; }
+
+    /* HOW IT WORKS */
+    .how {
+      background: #f0f4ff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .how h2 { font-size: 28px; font-weight: 800; margin-bottom: 40px; }
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 28px 24px;
+      width: 200px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .step .num {
+      width: 44px; height: 44px;
+      background: #e94560;
+      color: white;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step p { font-size: 14px; line-height: 1.5; color: #444; }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .testimonials h2 { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 40px; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .testi-card {
+      background: #fff;
+      border: 2px solid #f0f0f0;
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .testi-card .stars { color: #f5c518; font-size: 18px; margin-bottom: 10px; }
+    .testi-card p { font-size: 14px; color: #444; line-height: 1.6; margin-bottom: 14px; }
+    .testi-card .author { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+
+    /* OFFER */
+    .offer {
+      background: linear-gradient(135deg, #1a1a2e, #0f3460);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .offer h2 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+    .offer .price-old { font-size: 18px; color: #aaa; text-decoration: line-through; margin-bottom: 4px; }
+    .offer .price-new { font-size: 52px; font-weight: 900; color: #f5c518; margin-bottom: 8px; }
+    .offer .price-note { font-size: 14px; opacity: 0.7; margin-bottom: 32px; }
+    .offer .btn-primary { font-size: 20px; padding: 20px 60px; }
+    .offer .guarantee {
+      margin-top: 24px;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* UPSELL / DOWNSELL */
+    .upsell {
+      background: #fff8e1;
+      border: 2px dashed #f5c518;
+      border-radius: 16px;
+      max-width: 500px;
+      margin: 30px auto 0;
+      padding: 24px;
+    }
+    .upsell h3 { font-size: 18px; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
+    .upsell p { font-size: 14px; color: #555; margin-bottom: 16px; }
+    .btn-secondary {
+      display: inline-block;
+      background: #f5c518;
+      color: #1a1a1a;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 14px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+    }
+
+    /* FAQ */
+    .faq {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .faq h2 { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 40px; }
+    .faq-item { border-bottom: 1px solid #eee; padding: 20px 0; }
+    .faq-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .faq-item p { font-size: 14px; color: #555; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      background: #1a1a1a;
+      color: #888;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 13px;
+    }
+    footer a { color: #aaa; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">🔥 Viral no TikTok — Chegou no Brasil</div>
+    <h1>Imprima qualquer foto do celular<br>em <span>segundos</span> — sem tinta, sem fio</h1>
+    <p class="sub">A mini impressora térmica que virou febre no mundo todo. Conecta no celular via Bluetooth e imprime fotos, listas, etiquetas e lembretes na hora.</p>
+    <a href="#oferta" class="btn-primary">QUERO MINHA IMPRESSORA →</a>
+    <p class="social-proof">⭐⭐⭐⭐⭐ Mais de 12.000 pedidos realizados</p>
+  </section>
+
+  <!-- PRODUCT IMAGE -->
+  <div class="product-img">
+    <div class="img-box">🖨️</div>
+    <p>[ Substitua pelo foto real do produto ]</p>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits">
+    <h2>Por que todo mundo está comprando?</h2>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="icon">📱</div>
+        <h3>Conecta no Celular</h3>
+        <p>Via Bluetooth. Compatível com Android e iPhone. Sem instalar nada complicado.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">🚫🖊️</div>
+        <h3>Sem Tinta</h3>
+        <p>Tecnologia térmica. Não precisa comprar cartucho. Gasta só o papel (baratíssimo).</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">👜</div>
+        <h3>Cabe na Bolsa</h3>
+        <p>Super compacta e leve. Leva para escola, trabalho, viagem.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="icon">🎁</div>
+        <h3>Presente Perfeito</h3>
+        <p>Presente criativo e diferente. Agrada qualquer pessoa de qualquer idade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <h2>Como funciona em 3 passos</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <p>Conecte a impressora ao seu celular via <strong>Bluetooth</strong></p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <p>Escolha a foto, texto ou etiqueta no <strong>app gratuito</strong></p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <p>Pressione imprimir e em <strong>10 segundos</strong> está pronta</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>O que estão dizendo 💬</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Comprei pra minha filha de 15 anos e ela ficou LOUCA. Ficou a tarde toda imprimindo fotos das amigas pra decorar o quarto."</p>
+        <div class="author">— Ana Paula M., São Paulo</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Uso pra imprimir etiquetas da minha loja. Acabou com o trabalho manual. Melhor compra do mês com certeza."</p>
+        <div class="author">— Ricardo T., Belo Horizonte</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Vi no TikTok e fui comprar achando que era enganação. Chegou rápido, funciona perfeitamente. Recomendo demais!"</p>
+        <div class="author">— Camila S., Porto Alegre</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer" id="oferta">
+    <h2>Garanta a sua agora</h2>
+    <div class="price-old">De R$ 199,00</div>
+    <div class="price-new">R$ 149,00</div>
+    <div class="price-note">+ frete grátis • entrega em 5-10 dias úteis</div>
+    <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=3388324465-6d0e4420-37ea-4d85-8e51-d469bc099018" class="btn-primary">COMPRAR AGORA COM DESCONTO →</a>
+    <p class="guarantee">🛡️ Garantia de 7 dias — se não gostar, devolvemos 100% do valor</p>
+
+    <!-- UPSELL -->
+    <div class="upsell">
+      <h3>🎁 Oferta Especial: Leve 2 por R$ 249</h3>
+      <p>Uma pra você e outra de presente. Economia de R$ 49 no par. Válido somente nessa página.</p>
+      <a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=3388324465-6d0e4420-37ea-4d85-8e51-d469bc099018" class="btn-secondary">QUERO 2 UNIDADES →</a>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Dúvidas Frequentes</h2>
+
+    <div class="faq-item">
+      <h3>Funciona com qualquer celular?</h3>
+      <p>Sim! Compatível com Android (5.0+) e iPhone (iOS 9+). Conecta via Bluetooth e o app é gratuito na App Store e Google Play.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Precisa comprar tinta?</h3>
+      <p>Não. A impressão é térmica — funciona com calor, sem tinta. Você só compra o papel de reposição, que é muito barato (R$ 5–10 um rolo).</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Em quanto tempo chega?</h3>
+      <p>Enviamos em até 2 dias úteis após o pagamento. A entrega leva de 5 a 10 dias úteis dependendo da sua região.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>E se eu não gostar?</h3>
+      <p>Sem problema. Você tem 7 dias para testar. Se não ficar satisfeito por qualquer motivo, devolvemos 100% do valor sem burocracia.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Posso imprimir em preto e branco e colorido?</h3>
+      <p>A impressão é em escala de cinza (preto e branco). Para fotos, o resultado é ótimo — semelhante à estética de foto polaroid.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 — Todos os direitos reservados</p>
+    <p style="margin-top:8px">
+      <a href="#">Política de Privacidade</a> &nbsp;|&nbsp;
+      <a href="#">Termos de Uso</a> &nbsp;|&nbsp;
+      <a href="mailto:denaciogroup@gmail.com">Contato</a>
+    </p>
+  </footer>
+
+</body>
+</html>
